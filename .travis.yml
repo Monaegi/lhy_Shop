@@ -12,3 +12,5 @@ before_install:
 - openssl aes-256-cbc -K $encrypted_4e06998d5487_key -iv $encrypted_4e06998d5487_iv
   -in secrets.tar.enc -out secrets.tar -d
 - tar xvf secrets.tar
+after_success:
+- "./script_merge.sh"

@@ -9,6 +9,7 @@ pillow = "*"
 django-json-secrets = "*"
 
 [dev-packages]
+awsebcli = "*"
 
 [requires]
 python_version = "3.6"

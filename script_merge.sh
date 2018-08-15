@@ -13,4 +13,3 @@ git merge --ff-only "$TRAVIS_COMMIT"
 push_uri="https://$GITHUB_TOKEN@github.com/$GITHUB_REPO"
 
 git push "$push_uri" master >/dev/null 2>&1
-#git push "$push_uri" :"$TRAVIS_BRANCH" >/dev/null 2>&1

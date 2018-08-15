@@ -3,18 +3,17 @@ echo "- EB Deploy Start -"
 export GIT_COMMITTER_EMAIL="dev@lhy.kr"
 export GIT_COMMITTER_NAME="LeeHanYeong"
 
-if [ $TRAVIS_BRANCH -ne "master" ];then
+echo "Branch!"
+echo $TRAVIS_BRANCH
+if [ ! $TRAVIS_BRANCH = "master" ];then
     echo " Not master branch, deploy aborted"
     exit 1
 fi
 
-echo " Clone repo ($GITHUB_REPO)"
-repo_temp=$(mktemp -d)
-git clone "https://github.com/$GITHUB_REPO" "$repo_temp"
-cd "$repo_temp"
-
 echo " checkout master"
-git checkout master
+repo_uri="https://$GITHUB_TOKEN@github.com/$GITHUB_REPO"
+git fetch $repo_uri
+git merge $repo_uri/master
 
 echo " make requirements, add secrets"
 # requirements생성, secrets를 강제로 staging area에 추가

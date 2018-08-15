@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 echo "- Merge Start -"
 export GIT_COMMITTER_EMAIL="dev@lhy.kr"
 export GIT_COMMITTER_NAME="LeeHanYeong"

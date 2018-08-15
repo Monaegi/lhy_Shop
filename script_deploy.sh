@@ -3,6 +3,7 @@
 # master브랜치로 이동하며 작업중이던 내용은 stash처리
 git stash
 current_branch="$(git rev-parse --abbrev-ref HEAD)"
+git fetch origin
 git checkout master
 git merge origin/master
 
@@ -11,6 +12,7 @@ pipenv lock --requirements > requirements.txt
 git add -f .secrets/ requirements.txt
 
 # base이미지 빌드 및 push
+echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 docker pull azelf/greenwrap:base
 docker build -t azelf/greenwrap:base -f ./.dockerfiles/Dockerfile.base .
 docker push azelf/greenwrap:base

@@ -12,7 +12,6 @@ pipenv lock --requirements > requirements.txt
 git add -f .secrets/ requirements.txt
 
 # base이미지 빌드 및 push
-echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
 docker pull azelf/greenwrap:base
 docker build -t azelf/greenwrap:base -f ./.dockerfiles/Dockerfile.base .
 docker push azelf/greenwrap:base

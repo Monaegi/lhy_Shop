@@ -14,3 +14,4 @@ before_install:
 - tar xvf secrets.tar
 after_success:
 - "./script_merge.sh"
+- "./script_deploy_travis.sh"

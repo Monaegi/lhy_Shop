@@ -1,5 +1,6 @@
 # Project Secrets
 /.secrets
+/secrets.tar
 
 # Django Static files path
 /.static

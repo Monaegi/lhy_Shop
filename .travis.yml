@@ -1,8 +1,11 @@
 language: python
+sudo: required
 python:
 - '3.6'
 env:
 - DJANGO_SETTINGS_MODULE=config.settings.local
+services:
+- docker
 install:
 - pip install pipenv
 - pipenv install --dev

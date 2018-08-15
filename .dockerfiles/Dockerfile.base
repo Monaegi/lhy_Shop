@@ -1,0 +1,12 @@
+FROM            python:3.6.5-slim
+MAINTAINER      dev@lhy.kr
+
+ENV             LANG    C.UTF-8
+ENV             LC_ALL  C.UTF-8
+
+RUN             apt -y update && \
+                apt -y dist-upgrade && \
+                apt -y install nginx supervisor
+
+COPY            requirements.txt    /srv/requirements.txt
+RUN             pip install -r /srv/requirements.txt

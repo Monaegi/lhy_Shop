@@ -1,0 +1,48 @@
+{% load static %}
+<nav class="site-menu">
+	<ul>
+		<li class="active"><a href=""><span>Home</span></a>
+			<ul class="sub-menu">
+				<li class="active has-children"><a href=""><span>Hero Slider</span></a>
+					<ul class="sub-menu w-400 p-0">
+						<li><a href="" class="p-0"><img src="{% static 'theme/img/banners/home01.jpg' %}" alt=""></a></li>
+					</ul>
+				</li>
+				<li class="has-children"><a href=""><span>Categories Grid</span></a>
+					<ul class="sub-menu w-400 p-0">
+						<li><a href="" class="p-0"><img src="{% static 'theme/img/banners/home02.jpg' %}" alt=""></a></li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+		<li><a href=""><span>Shop</span></a>
+			<ul class="sub-menu">
+				<li><a href="">Shop Categories</a></li>
+				<li class="has-children"><a href=""><span>Shop Layout</span></a>
+					<ul class="sub-menu">
+						<li><a href="">Boxed Left Sidebar</a></li>
+						<li><a href="">Boxed Right Sidebar</a></li>
+					</ul>
+				</li>
+			</ul>
+		</li>
+		<li><a href=""><span>Mega menu</span></a>
+			<ul class="mega-menu">
+				<li><span class="mega-menu-title text-uppercase">Furniture</span>
+					<ul>
+						<li><a href="">Desk Benching</a></li>
+						<li><a href="">Adjustable Desks</a></li>
+					</ul>
+				</li>
+				<li><span class="mega-menu-title text-uppercase">Lighting</span>
+					<ul>
+						<li><a href="">Ceiling Lights</a></li>
+					</ul>
+				</li>
+				<li class="banner-column">
+					<a href="" style="background-image: url({% static 'theme/img/banners/mega-menu.jpg' %});"></a>
+				</li>
+			</ul>
+		</li>
+	</ul>
+</nav>

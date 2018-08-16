@@ -1,0 +1,36 @@
+{% load static %}
+<div class="site-branding">
+	<a href="#" class="site-logo hidden-xs-down">
+		<img src="{% static 'theme/img/logo/logo-72bb23.png' %}" alt="">
+	</a>
+	<a href="#" class="site-logo logo-sm hidden-sm-up">
+		<img src="{% static 'theme/img/logo/logo-sm.png' %}" alt="">
+	</a>
+	<div class="lang-currency-switcher">
+		<div class="lang-currency-toggle">
+			<img src="{% static 'theme/img/flags/GB.png' %}" alt="">
+			<span>USD</span>
+			<i class="material-icons arrow_drop_down"></i>
+			<ul class="lang-currency-dropdown">
+				<li>
+					<select class="form-control form-control-sm">
+						<option value="usd">$ USD</option>
+            <option value="usd">€ EUR</option>
+            <option value="usd">£ UKP</option>
+            <option value="usd">¥ JPY</option>
+					</select>
+				</li>
+				<li>
+					<a href="">
+						<img src="{% static 'theme/img/flags/FR.png' %}" alt="">Français
+					</a>
+				</li>
+				<li>
+					<a href="">
+						<img src="{% static 'theme/img/flags/DE.png' %}" alt="">Deutsch
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

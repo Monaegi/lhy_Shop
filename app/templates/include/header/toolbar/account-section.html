@@ -1,0 +1,58 @@
+{% load static %}
+<ul class="nav nav-tabs nav-justified" role="tablist">
+	<li class="nav-item"><a href="#login" class="nav-link active" data-toggle="tab" role="tab">Login</a></li>
+	<li class="nav-item"><a href="#signup" class="nav-link" data-toggle="tab" role="tab">Signup</a></li>
+</ul>
+<div class="tab-content">
+	<div class="tab-pane fade show active" id="login" role="tabpanel">
+		<form action="" id="login-form" autocomplete="off">
+			<div class="form-group input-group">
+				<input type="text" class="form-control" placeholder="ID" required>
+				<span class="input-group-addon">
+					<i class="material-icons mail"></i>
+				</span>
+			</div>
+			<div class="form-group input-group">
+				<input type="password" class="form-control" placeholder="PW" required>
+				<span class="input-group-addon">
+					<i class="material-icons lock"></i>
+				</span>
+			</div>
+			<div class="custom-control custom-checkbox form-group">
+				<input id="logged" type="checkbox" class="custom-control-input" checked>
+				<label for="logged" class="custom-control-label">Keep me logged in</label>
+			</div>
+			<button class="btn btn-primary btn-block" type="submit">Login</button>
+		</form>
+	</div>
+	<div class="tab-pane fade" id="signup" role="tabpanel">
+		<form action="" id="signup-form" autocomplete="off">
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="Name">
+			</div>
+			<div class="form-group">
+				<input type="email" class="form-control" placeholder="Email">
+			</div>
+			<div class="form-group">
+				<input type="password" class="form-control" placeholder="Password">
+			</div>
+			<div class="form-group">
+				<input type="password" class="form-control" placeholder="Confirm Password">
+			</div>
+			<button class="btn btn-primary btn-block" type="submit">Signup</button>
+			<p class="text-muted text-sm mt-4">OR sign up with your social account</p>
+			<a href="" class="media-btn media-facebook">
+				<i class="socicon-facebook"></i>
+				<span>Signup with Facebook</span>
+			</a>
+			<a href="" class="media-btn media-google">
+				<i class="socicon-google"></i>
+				<span>Signup with Google</span>
+			</a>
+			<a href="" class="media-btn media-twitter">
+				<i class="socicon-twitter"></i>
+				<span>Signup with Twitter</span>
+			</a>
+		</form>
+	</div>
+</div>

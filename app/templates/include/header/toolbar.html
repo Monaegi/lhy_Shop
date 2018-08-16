@@ -1,0 +1,40 @@
+{% load static %}
+<div class="toolbar">
+	<!-- Toolbar Items -->
+	<div class="inner">
+		<a href="#mobileMenu" class="toolbar-toggle mobile-menu-toggle">
+			<i class="material-icons menu"></i>
+		</a>
+		<a href="#search" class="toolbar-toggle search-toggle">
+			<i class="material-icons search"></i>
+		</a>
+		<a href="#account" class="toolbar-toggle">
+			<i class="material-icons person"></i>
+		</a>
+		<a href="#cart" class="toolbar-toggle">
+			<i>
+				<span class="material-icons shopping_basket"></span>
+				<span class="count">3</span>
+			</i>
+		</a>
+	</div>
+	<!-- Toolbar Dropdown -->
+	<div class="toolbar-dropdown">
+		<!-- Mobile Menu Section -->
+		<div class="toolbar-section" id="mobileMenu">
+			{% include 'include/header/toolbar/mobile-section.html' %}
+		</div>
+		<!-- Search Section -->
+		<div class="toolbar-section" id="search">
+			{% include 'include/header/toolbar/search-section.html' %}
+		</div>
+		<!-- Account Section -->
+		<div class="toolbar-section" id="account">
+			{% include 'include/header/toolbar/account-section.html' %}
+		</div>
+		<!-- Cart Section -->
+		<div class="toolbar-section" id="cart">
+			{% include 'include/header/toolbar/cart-section.html' %}
+		</div>
+	</div>
+</div>

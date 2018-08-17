@@ -11,6 +11,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 ROOT_DIR = os.path.dirname(BASE_DIR)
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
+CONFIGS_DIR = os.path.join(ROOT_DIR, '.configs')
 SECRETS_DIR = os.path.join(ROOT_DIR, '.secrets')
 MEDIA_ROOT = os.path.join(ROOT_DIR, '.media')
 STATIC_ROOT = os.path.join(ROOT_DIR, '.static')
@@ -21,9 +22,22 @@ STATICFILES_DIRS = [
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
+# Auth
+AUTH_USER_MODEL = 'members.User'
+ADMIN_USERNAME = 'pbkdf2_sha256$120000$kQERZDMkpKxs$1ALg7vpcUacEYO7IH3GJvdBgukLJeJr9Pe+P+Itvk3A='
+ADMIN_PASSWORD = 'pbkdf2_sha256$120000$Z3gZEyW25bKm$8OMEFPkZ8gGFpFqUX8TiVgvlERUG8/UkKoNz3nJs7VQ='
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'members.backends.SettingsBackend',
+]
+
 import_secrets()
 
 INSTALLED_APPS = [
+    'members',
+    'products',
+    'utils',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

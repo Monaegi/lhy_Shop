@@ -1,0 +1,102 @@
+{
+  "topCategories": [
+    {
+      "title": "일반봉투",
+      "middleCategories": [
+        {
+          "title": "PE봉투"
+        },
+        {
+          "title": "PP봉투"
+        },
+        {
+          "title": "HDPE봉투"
+        },
+        {
+          "title": "OPP봉투"
+        },
+        {
+          "title": "OPP무광 M봉투"
+        },
+        {
+          "title": "지퍼폴리백"
+        },
+        {
+          "title": "PVC지퍼백"
+        },
+        {
+          "title": "부직포 주머니"
+        },
+        {
+          "title": "헤다봉투"
+        },
+        {
+          "title": "종이봉투"
+        },
+        {
+          "title": "쇼핑백"
+        }
+      ]
+    },
+    {
+      "title": "알루미늄/크라프트/진공",
+      "middleCategories": [
+        {
+          "title": "알루미늄M (커피)"
+        },
+        {
+          "title": "알루미늄봉투"
+        },
+        {
+          "title": "전면투명+후면AL봉투"
+        },
+        {
+          "title": "전면투명+후면크라프트"
+        },
+        {
+          "title": "크라프트봉투"
+        },
+        {
+          "title": "진공봉투"
+        },
+        {
+          "title": "정전기방지봉투"
+        }
+      ]
+    },
+    {
+      "title": "안전봉투 (에어캡봉투)",
+      "middleCategories": [
+        {
+          "title": "일반 안전봉투"
+        },
+        {
+          "title": "에어캡 안전봉투"
+        },
+        {
+          "title": "PE발포 안전봉투"
+        },
+        {
+          "title": "크라프트 안전봉투"
+        }
+      ]
+    },
+    {
+      "title": "포장자재",
+      "middleCategories": [
+        {
+          "title": "테이프"
+        },
+        {
+          "title": "커터기"
+        },
+        {
+          "title": "에어캡시트"
+        },
+        {
+          "title": "팬시봉투"
+        }
+      ]
+    }
+  ]
+}

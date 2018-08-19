@@ -1,0 +1,36 @@
+{% extends 'admin/change_list.html' %}
+
+{% block content_title %}
+	<h1>카테고리 관리</h1>
+{% endblock %}
+
+{% block result_list %}
+	{% for top_category in cl.queryset %}
+		<div class="top_category">
+			<h2>{{ top_category.title }}</h2>
+			<div class="results">
+				<table>
+					<tbody>
+						{% for middle_category in top_category.sub_categories.all %}
+							<tr>
+								<td>
+									<h3 class="mg-0">
+										<a href="{% url 'admin:products_productcategorymiddle_change' middle_category.pk %}" target="_blank">{{ middle_category.title }}</a>
+									</h3>
+									<ul class="small-category-list">
+									{% for small_category in middle_category.sub_categories.all %}
+										<li>{{ small_category.title }}</li>
+									{% endfor %}
+									</ul>
+								</td>
+							</tr>
+						{% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	{% endfor %}
+{#	{% for obj in cl.queryset %}#}
+{#		{{ obj }}#}
+{#	{% endfor %}#}
+{% endblock %}

@@ -7,3 +7,4 @@ from ..models import *
 admin.site.register(ProductCategoryTop, ProductCategoryTopAdmin)
 admin.site.register(ProductCategoryMiddle, ProductCategoryMiddleAdmin)
 admin.site.register(ProductCategorySmall, ProductCategoryTopAdmin)
+admin.site.register(ProductCategory, ProductCategoryAdmin)

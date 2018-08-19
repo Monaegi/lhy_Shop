@@ -4,6 +4,7 @@ __all__ = (
     'ProductCategoryTop',
     'ProductCategoryMiddle',
     'ProductCategorySmall',
+    'ProductCategory',
 )
 
 
@@ -15,7 +16,7 @@ class ProductCategoryTop(models.Model):
         verbose_name_plural = f'{verbose_name} 목록'
 
     def __str__(self):
-        return f'{self.Meta.verbose_name} ({self.title})'
+        return f'{self._meta.verbose_name} ({self.title})'
 
 
 class ProductCategoryMiddle(models.Model):
@@ -61,3 +62,10 @@ class ProductCategorySmall(models.Model):
             middle=self.middle_category.title,
             small=self.title,
         )
+
+
+class ProductCategory(ProductCategoryTop):
+    class Meta:
+        proxy = True
+        verbose_name = '카테고리'
+        verbose_name_plural = f'{verbose_name} 목록'

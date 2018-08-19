@@ -17,7 +17,7 @@ docker build -t azelf/greenwrap:base -f ./.dockerfiles/Dockerfile.base .
 docker push azelf/greenwrap:base
 
 # deploy시작
-eb deploy --profile greenwrap --staged &
+eb deploy --profile greenwrap --staged
 
 # 임시로 추가한 secrets와 requirements를 staging area에서 제거
 git reset HEAD .secrets/ requirements.txt

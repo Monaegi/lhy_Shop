@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# TravisCI에서 실행
+#  dev -> master로 자동 merge 스크립트
+
 echo "- Merge Start -"
 export GIT_COMMITTER_EMAIL="dev@lhy.kr"
 export GIT_COMMITTER_NAME="LeeHanYeong"

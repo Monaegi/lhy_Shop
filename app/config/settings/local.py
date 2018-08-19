@@ -3,7 +3,11 @@ from .base import *
 import_secrets()
 
 DEBUG = True
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    '127.0.0.1',
+    'localhost',
+    'server.lhy.kr',
+]
 WSGI_APPLICATION = 'config.wsgi.local.application'
 
 INSTALLED_APPS += [

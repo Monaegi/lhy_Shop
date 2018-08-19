@@ -1,4 +1,58 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block content %}
+<div>
+	<section class="container-fluid pt-30 padding-bottom-2x">
+		<div class="row">
+			{% for i in '123456'|make_list %}
+			<div class="col-md-2 mb-30">
+				<a href="#" class="category-card flex-wrap">
+					<div class="category-card-info align-self-center">
+						<h3 class="category-card-title text-center">Seating</h3>
+						<h4 class="category-card-subtitle">Starting from $269.00</h4>
+					</div>
+					<div class="category-card-thumb">
+						<img src="{% static 'theme/img/shop/categories' %}/0{{ i }}.jpg" alt="">
+					</div>
+				</a>
+			</div>
+			{% endfor %}
+		</div>
+	</section>
+
+	<!-- Products -->
+{#	<section class="container-fluid padding-bottom-2x">#}
+{#		<div class="row">#}
+{#			<div class="col-lg-3 col-sm-6">#}
+{#				<div class="product-card mb-30">#}
+{#					<div class="product-card-thumb">#}
+{#						<span class="product-badge text-danger">Sale</span>#}
+{#						<a href="#" class="product-card-link"></a>#}
+{#						<img src="{% static 'theme/img/shop/th01.jpg' %}" alt="">#}
+{#						<div class="product-card-buttons">#}
+{#							<button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Wishlist">#}
+{#								<i class="material-icons favorite_border"></i>#}
+{#							</button>#}
+{#							<button class="btn btn-primary btn-sm"#}
+{#							        data-toast data-toast-type="success"#}
+{#							        data-toast-position="topRight"#}
+{#							        data-toast-icon="material-icons check"#}
+{#											data-toast-title="Product"#}
+{#											data-toast-message="successfully added to cart!">Add to Cart</button>#}
+{#						</div>#}
+{#					</div>#}
+{#					<div class="product-card-details">#}
+{#						<h3 class="product-card-title">#}
+{#							<a href="#">Storage Box</a>#}
+{#						</h3>#}
+{#						<h4 class="product-card-price">#}
+{#							<del>$49.00</del>$38.00#}
+{#						</h4>#}
+{#					</div>#}
+{#				</div>#}
+{#			</div>#}
+{#		</div>#}
+{#	</section>#}
+</div>
 {% endblock %}

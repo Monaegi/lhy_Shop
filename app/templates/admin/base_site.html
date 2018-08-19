@@ -1,5 +1,6 @@
 {% extends "admin/base.html" %}
 {% load static %}
+{% load sass_tags %}
 
 {% block title %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
 
@@ -9,8 +10,8 @@
 
 {% block extrastyle %}
 	{{ block.super }}
-	<link rel="stylesheet" href="{% static 'css/admin/style.css' %}">
-	<link rel="stylesheet" href="{% static 'css/admin/product-category.css' %}">
+	<link rel="stylesheet" href="{% sass_src 'scss/admin/style.scss' %}">
+	<link rel="stylesheet" href="{% sass_src 'scss/admin/product-category.scss' %}">
 {% endblock %}
 
 {% block nav-global %}{% endblock %}

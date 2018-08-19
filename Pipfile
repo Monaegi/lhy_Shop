@@ -7,12 +7,15 @@ name = "pypi"
 django = "*"
 pillow = "*"
 django-json-secrets = "*"
+django-sass-processor = "*"
 
 [dev-packages]
 awsebcli = "*"
 django-extensions = "*"
 ipython = "*"
 django-debug-toolbar = "*"
+django-compressor = "*"
+libsass = "*"
 
 [requires]
 python_version = "3.6"

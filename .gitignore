@@ -2,6 +2,10 @@
 /.secrets
 /secrets.tar
 
+# CSS
+/app/static/css
+/app/static/**/*.css
+
 # Django Static files path
 /.static
 /.media

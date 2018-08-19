@@ -13,12 +13,18 @@ STATIC_DIR = os.path.join(BASE_DIR, 'static')
 TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 CONFIGS_DIR = os.path.join(ROOT_DIR, '.configs')
 SECRETS_DIR = os.path.join(ROOT_DIR, '.secrets')
+
+# Static
 MEDIA_ROOT = os.path.join(ROOT_DIR, '.media')
 STATIC_ROOT = os.path.join(ROOT_DIR, '.static')
 STATICFILES_DIRS = [
     STATIC_DIR,
 ]
-
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'sass_processor.finders.CssFinder',
+]
 STATIC_URL = '/static/'
 MEDIA_URL = '/media/'
 
@@ -44,6 +50,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'sass_processor',
 ]
 
 MIDDLEWARE = [

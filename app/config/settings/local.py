@@ -7,6 +7,7 @@ ALLOWED_HOSTS = [
     '127.0.0.1',
     'localhost',
     'server.lhy.kr',
+    '.elasticbeanstalk.com',
 ]
 WSGI_APPLICATION = 'config.wsgi.local.application'
 

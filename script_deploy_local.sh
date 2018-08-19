@@ -8,7 +8,7 @@ git checkout master
 git merge origin/master
 
 # requirements생성, secrets를 강제로 staging area에 추가
-pipenv lock --requirements > requirements.txt
+pipenv lock --requirements --dev > requirements.txt
 git add -f .secrets/ requirements.txt
 
 # base이미지 빌드 및 push

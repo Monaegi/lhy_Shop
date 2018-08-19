@@ -3,23 +3,26 @@
 
 {% block content %}
 <div>
-	<section class="container-fluid pt-30 padding-bottom-2x">
+	{% for top_category in categories %}
+	<section class="container-fluid pt-30 padding-bottom-1x index-category-container">
+		<h3 class="text-center">{{ top_category.title }}</h3>
 		<div class="row">
-			{% for i in '123456'|make_list %}
-			<div class="col-md-2 mb-30">
+			{% for middle_category in top_category.sub_categories.all %}
+			<div class="col-md-4 mb-30 index-category-item">
 				<a href="#" class="category-card flex-wrap">
 					<div class="category-card-info align-self-center">
-						<h3 class="category-card-title text-center">Seating</h3>
+						<h3 class="category-card-title text-center">{{ middle_category.title }}</h3>
 						<h4 class="category-card-subtitle">Starting from $269.00</h4>
 					</div>
 					<div class="category-card-thumb">
-						<img src="{% static 'theme/img/shop/categories' %}/0{{ i }}.jpg" alt="">
+						<img src="{% static 'theme/img/shop/categories' %}/0{{ forloop.counter }}.jpg" alt="">
 					</div>
 				</a>
 			</div>
 			{% endfor %}
 		</div>
 	</section>
+	{% endfor %}
 
 	<!-- Products -->
 {#	<section class="container-fluid padding-bottom-2x">#}

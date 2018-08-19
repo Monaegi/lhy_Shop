@@ -1,14 +1,16 @@
 section.index-category-container .index-category-item {
     padding-right: 8px;
     padding-left: 8px;
-}
-section.index-category-container .index-category-item .category-card {
-    padding: 20px 20px;
-}
-section.index-category-container .index-category-item .category-card .category-card-title {
-    font-size: 20px;
-    margin-bottom: 8px;
-}
-section.index-category-container .index-category-item .category-card .category-card-subtitle {
-    font-size: 12px;
+
+    .category-card {
+        padding: 20px 20px;
+
+        .category-card-title {
+            font-size: 20px;
+            margin-bottom: 8px;
+        }
+        .category-card-subtitle {
+            font-size: 12px;
+        }
+    }
 }

@@ -7,6 +7,8 @@
 	      content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>{% block title %}GreenWrap{% endblock %}</title>
+	<link href="https://fonts.googleapis.com/css?family=Gothic+A1" rel="stylesheet">
+{#	<link href="https://fonts.googleapis.com/css?family=Nanum+Gothic" rel="stylesheet">#}
 	<link rel="stylesheet" href="{% static 'theme/css/vendor.min.css' %}">
 	<link rel="stylesheet" href="{% static 'theme/css/styles.min.css' %}">
 	<link rel="stylesheet" href="{% sass_src 'scss/style.scss' %}">
@@ -14,7 +16,7 @@
 </head>
 <body>
 	<div id="wrap">
-		<header class="navbar navbar-sticky">
+		<header class="top-nav navbar navbar-sticky">
 			<!-- Site Branding -->
 			{% include 'include/header/site-branding.html' %}
 

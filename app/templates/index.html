@@ -2,60 +2,89 @@
 {% load static %}
 
 {% block content %}
-<div>
-	{% for top_category in categories %}
-	<section class="container-fluid pt-30 padding-bottom-1x index-category-container">
-		<h3 class="text-center">{{ top_category.title }}</h3>
-		<div class="row">
-			{% for middle_category in top_category.sub_categories.all %}
-			<div class="col-md-4 mb-30 index-category-item">
-				<a href="#" class="category-card flex-wrap">
-					<div class="category-card-info align-self-center">
-						<h3 class="category-card-title text-center">{{ middle_category.title }}</h3>
-						<h4 class="category-card-subtitle">Starting from $269.00</h4>
-					</div>
-					<div class="category-card-thumb">
-						<img src="{% static 'theme/img/shop/categories' %}/0{{ forloop.counter }}.jpg" alt="">
-					</div>
-				</a>
+<div class="container-fluid">
+	<div class="row">
+		<div id="main-left" class="col-xl-2 col-lg-3 col-md-4 order-md-1 pt-30">
+			<div class="sidebar-toggle position-left">
+				<i class="material-icons filter_list"></i>
 			</div>
-			{% endfor %}
+			<aside class="sidebar sidebar-offcanvas position-left">
+				<span class="sidebar-close">
+					<i class="material-icons icon_close"></i>
+				</span>
+				<section class="widget widget-categories pt-0">
+					<h3 class="widget-title">전체 카테고리</h3>
+					<ul>
+						{% for top_category in categories %}
+							<li class="has-children expanded main-category-item">
+								<a href="">{{ top_category.title }}</a>
+								<ul>
+									{% for middle_category in top_category.sub_categories.all %}
+										<li><a href="#">{{ middle_category.title }}</a></li>
+									{% endfor %}
+								</ul>
+							</li>
+						{% endfor %}
+					</ul>
+				</section>
+			</aside>
 		</div>
-	</section>
-	{% endfor %}
+		<div class="col-xl-10 col-lg-9 col-md-8 order-md-2">
+			{% for top_category in categories %}
+			<section class="pt-30 padding-bottom-1x index-category-container">
+				<h3 class="top-category-title">{{ top_category.title }}</h3>
+				<div class="row">
+					{% for middle_category in top_category.sub_categories.all %}
+					<div class="col-xl-3 col-lg-4 mb-3 index-category-item">
+						<a href="#" class="category-card flex-wrap">
+							<div class="category-card-info align-self-center">
+								<h3 class="category-card-title text-center">{{ middle_category.title }}</h3>
+								<h4 class="category-card-subtitle">Starting from $269.00</h4>
+							</div>
+							<div class="category-card-thumb">
+								<img src="{% static 'theme/img/shop/categories' %}/0{{ forloop.counter }}.jpg" alt="">
+							</div>
+						</a>
+					</div>
+					{% endfor %}
+				</div>
+			</section>
+			{% endfor %}
 
-	<!-- Products -->
-{#	<section class="container-fluid padding-bottom-2x">#}
-{#		<div class="row">#}
-{#			<div class="col-lg-3 col-sm-6">#}
-{#				<div class="product-card mb-30">#}
-{#					<div class="product-card-thumb">#}
-{#						<span class="product-badge text-danger">Sale</span>#}
-{#						<a href="#" class="product-card-link"></a>#}
-{#						<img src="{% static 'theme/img/shop/th01.jpg' %}" alt="">#}
-{#						<div class="product-card-buttons">#}
-{#							<button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Wishlist">#}
-{#								<i class="material-icons favorite_border"></i>#}
-{#							</button>#}
-{#							<button class="btn btn-primary btn-sm"#}
-{#							        data-toast data-toast-type="success"#}
-{#							        data-toast-position="topRight"#}
-{#							        data-toast-icon="material-icons check"#}
-{#											data-toast-title="Product"#}
-{#											data-toast-message="successfully added to cart!">Add to Cart</button>#}
-{#						</div>#}
-{#					</div>#}
-{#					<div class="product-card-details">#}
-{#						<h3 class="product-card-title">#}
-{#							<a href="#">Storage Box</a>#}
-{#						</h3>#}
-{#						<h4 class="product-card-price">#}
-{#							<del>$49.00</del>$38.00#}
-{#						</h4>#}
-{#					</div>#}
-{#				</div>#}
-{#			</div>#}
-{#		</div>#}
-{#	</section>#}
+			<!-- Products -->
+		{#	<section class="container-fluid padding-bottom-2x">#}
+		{#		<div class="row">#}
+		{#			<div class="col-lg-3 col-sm-6">#}
+		{#				<div class="product-card mb-30">#}
+		{#					<div class="product-card-thumb">#}
+		{#						<span class="product-badge text-danger">Sale</span>#}
+		{#						<a href="#" class="product-card-link"></a>#}
+		{#						<img src="{% static 'theme/img/shop/th01.jpg' %}" alt="">#}
+		{#						<div class="product-card-buttons">#}
+		{#							<button class="btn btn-white btn-sm btn-wishlist" data-toggle="tooltip" title="Wishlist">#}
+		{#								<i class="material-icons favorite_border"></i>#}
+		{#							</button>#}
+		{#							<button class="btn btn-primary btn-sm"#}
+		{#							        data-toast data-toast-type="success"#}
+		{#							        data-toast-position="topRight"#}
+		{#							        data-toast-icon="material-icons check"#}
+		{#											data-toast-title="Product"#}
+		{#											data-toast-message="successfully added to cart!">Add to Cart</button>#}
+		{#						</div>#}
+		{#					</div>#}
+		{#					<div class="product-card-details">#}
+		{#						<h3 class="product-card-title">#}
+		{#							<a href="#">Storage Box</a>#}
+		{#						</h3>#}
+		{#						<h4 class="product-card-price">#}
+		{#							<del>$49.00</del>$38.00#}
+		{#						</h4>#}
+		{#					</div>#}
+		{#				</div>#}
+		{#			</div>#}
+		{#		</div>#}
+		{#	</section>#}
+		</div>
+	</div>
 </div>
 {% endblock %}

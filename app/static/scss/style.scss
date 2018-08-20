@@ -1,7 +1,6 @@
-html, body {
-    font-family: 'Apple SD Gothic Neo', 'Gothic A1', sans-serif;
-    //font-family: 'Gothic A1', sans-serif;
-}
+@import 'base';
+
+// Index
 #main-left li.main-category-item.has-children li {
     margin-bottom: 0;
 }
@@ -31,4 +30,14 @@ section.index-category-container  {
 }
 header.top-nav {
     border-bottom: 1px solid #f3f3f3;
+}
+
+// ProductCategory
+.product-category-middle-container {
+    .category-card {
+        padding: 20px;
+        .category-card-thumb {
+            max-width: 200px;
+        }
+    }
 }

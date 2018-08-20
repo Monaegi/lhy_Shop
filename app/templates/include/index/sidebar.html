@@ -1,0 +1,23 @@
+<div class="sidebar-toggle position-left">
+	<i class="material-icons filter_list"></i>
+</div>
+<aside class="sidebar sidebar-offcanvas position-left">
+	<span class="sidebar-close">
+		<i class="material-icons icon_close"></i>
+	</span>
+	<section class="widget widget-categories pt-0">
+		<h3 class="widget-title">전체 카테고리</h3>
+		<ul>
+			{% for top_category in categories %}
+				<li class="has-children {% if cur_top_category == top_category %}expanded{% endif %}">
+					<a href="{% url 'products:category-middle-list' top_category.pk %}">{{ top_category.title }}</a>
+					<ul>
+						{% for middle_category in top_category.sub_categories.all %}
+							<li><a href="#">{{ middle_category.title }}</a></li>
+						{% endfor %}
+					</ul>
+				</li>
+			{% endfor %}
+		</ul>
+	</section>
+</aside>

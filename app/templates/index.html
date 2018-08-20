@@ -17,7 +17,7 @@
 					<ul>
 						{% for top_category in categories %}
 							<li class="has-children expanded main-category-item">
-								<a href="">{{ top_category.title }}</a>
+								<a href="{% url 'products:category-middle-list' top_category.pk %}">{{ top_category.title }}</a>
 								<ul>
 									{% for middle_category in top_category.sub_categories.all %}
 										<li><a href="#">{{ middle_category.title }}</a></li>

@@ -3,7 +3,15 @@
 {% block content %}
 <div class="page-title">
   <div class="container">
-    <h1>{{ top_category.title }}</h1>
+    <h1>
+			{% if cur_small_category %}
+	      {{ cur_small_category.title }}
+	    {% elif cur_middle_category %}
+	      {{ cur_middle_category.title }}
+	    {% elif cur_top_category %}
+	      {{ cur_top_category.title }}
+	    {% endif %}
+    </h1>
     <ul class="breadcrumbs">
 	    {% for item in breadcrumbs %}
 		    <li>
@@ -23,7 +31,7 @@
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-xl-2 col-lg-3 col-md-4 order-md-1">
-			{% include 'include/index/sidebar.html' with cur_top_category=top_category %}
+			{% include 'include/index/sidebar.html' %}
 		</div>
 		<div class="col-xl-10 col-lg-9 col-md-8 order-md-2">
 			{% block product-content %}

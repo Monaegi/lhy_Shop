@@ -13,7 +13,19 @@
 					<a href="{% url 'products:category-middle-list' top_category.pk %}">{{ top_category.title }}</a>
 					<ul>
 						{% for middle_category in top_category.sub_categories.all %}
-							<li><a href="#">{{ middle_category.title }}</a></li>
+{#							<li class="{% if cur_middle_category == middle_category %}active {% endif %}"><a href="{% url 'products:product-list' %}?middle_category={{ middle_category.pk }}">{{ middle_category.title }}</a></li>#}
+							<li class="{% if cur_middle_category == middle_category %}active {% endif %}">
+								<a href="{% url 'products:product-list' %}?middle_category={{ middle_category.pk }}">{{ middle_category.title }}</a>
+								{% if middle_category.sub_categories.count > 1 %}
+								<ul>
+									{% for small_category in middle_category.sub_categories.all %}
+										<li class="{% if cur_small_category == small_category %}active {% endif %}">
+											<a href="{% url 'products:product-list' %}?middle_category={{ middle_category.pk }}&small_category={{ small_category.pk }}">{{ small_category.title }}</a>
+										</li>
+									{% endfor %}
+								</ul>
+								{% endif %}
+							</li>
 						{% endfor %}
 					</ul>
 				</li>

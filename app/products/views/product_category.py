@@ -11,7 +11,7 @@ class ProductCategoryMiddleListView(View):
     def get(self, request, top_category_pk):
         top_category = get_object_or_404(ProductCategoryTop, pk=top_category_pk)
         context = {
-            'top_category': top_category,
+            'cur_top_category': top_category,
             'breadcrumbs': [
                 {
                     'title': 'Home',
@@ -22,4 +22,4 @@ class ProductCategoryMiddleListView(View):
                 },
             ]
         }
-        return render(request, 'products/category/middle-list.html', context)
+        return render(request, 'products/category/middle_list.html', context)

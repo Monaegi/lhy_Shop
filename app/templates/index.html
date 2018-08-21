@@ -20,7 +20,7 @@
 								<a href="{% url 'products:category-middle-list' top_category.pk %}">{{ top_category.title }}</a>
 								<ul>
 									{% for middle_category in top_category.sub_categories.all %}
-										<li><a href="#">{{ middle_category.title }}</a></li>
+										<li><a href="{% url 'products:product-list' %}?middle_category={{ middle_category.pk }}">{{ middle_category.title }}</a></li>
 									{% endfor %}
 								</ul>
 							</li>

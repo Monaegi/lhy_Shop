@@ -1,14 +1,9 @@
 from django.urls import path
 
-from .views import (
-    ProductCategoryMiddleListView,
-    ProductListView,
-)
+from .views import ProductListView, ProductDetailView
 
 app_name = 'products'
 urlpatterns = [
-    path('', ProductListView.as_view(), name='product-list'),
-    path('category/<int:top_category_pk>/',
-         ProductCategoryMiddleListView.as_view(),
-         name='category-middle-list'),
+    path('products/', ProductListView.as_view(), name='product-list'),
+    path('products/<int:pk>/', ProductDetailView.as_view(), name='product-detail'),
 ]

@@ -1,71 +1,35 @@
 from django.db import models
 
 __all__ = (
-    'ProductCategoryTop',
-    'ProductCategoryMiddle',
-    'ProductCategorySmall',
     'ProductCategory',
 )
 
 
-class ProductCategoryTop(models.Model):
+class ProductCategory(models.Model):
+    parent_category = models.ForeignKey(
+        'self',
+        verbose_name='상위 카테고리',
+        on_delete=models.CASCADE,
+        related_name='category_set',
+        blank=True,
+        null=True,
+    )
     title = models.CharField('카테고리명', max_length=50)
 
     class Meta:
-        verbose_name = '최상위 카테고리'
+        verbose_name = '상품 카테고리'
         verbose_name_plural = f'{verbose_name} 목록'
 
     def __str__(self):
-        return f'{self._meta.verbose_name} ({self.title})'
-
-
-class ProductCategoryMiddle(models.Model):
-    top_category = models.ForeignKey(
-        ProductCategoryTop,
-        verbose_name='최상위 카테고리',
-        related_name='sub_categories',
-        on_delete=models.CASCADE,
-    )
-    title = models.CharField('중분류명', max_length=50)
-
-    class Meta:
-        verbose_name = '중분류'
-        verbose_name_plural = f'{verbose_name} 목록'
-        order_with_respect_to = 'top_category'
-
-    def __str__(self):
-        return f'{self.top_category.title} > {self.title}'
-
-    def save(self, *args, **kwargs):
-        super().save(*args, **kwargs)
-        if not self.sub_categories.exists():
-            self.sub_categories.create(title='미분류')
-
-
-class ProductCategorySmall(models.Model):
-    middle_category = models.ForeignKey(
-        ProductCategoryMiddle,
-        verbose_name='중분류',
-        related_name='sub_categories',
-        on_delete=models.CASCADE,
-    )
-    title = models.CharField('소분류명', max_length=50)
-
-    class Meta:
-        verbose_name = '소분류'
-        verbose_name_plural = f'{verbose_name} 목록'
-        order_with_respect_to = 'middle_category'
-
-    def __str__(self):
-        return '{top} > {middle} > {small}'.format(
-            top=self.middle_category.top_category.title,
-            middle=self.middle_category.title,
-            small=self.title,
+        return '{parent}{title}'.format(
+            parent=f'{self.parent_category.__str__()} > ' if self.parent_category else '',
+            title=self.title,
         )
 
+    @property
+    def is_top(self):
+        return not bool(self.parent_category)
 
-class ProductCategory(ProductCategoryTop):
-    class Meta:
-        proxy = True
-        verbose_name = '카테고리'
-        verbose_name_plural = f'{verbose_name} 목록'
+    @property
+    def has_child(self):
+        return self.category_set.exists()

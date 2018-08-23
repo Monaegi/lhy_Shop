@@ -1,0 +1,15 @@
+<ul>
+	{% for category in categories %}
+		<li class="{% if category.has_child %}has-children{% endif %} expanded main-category-item">
+			<a href="#">{{ category.title }}</a>
+			{% include 'include/index/sidebar-category.html' with categories=category.category_set.all only %}
+			<ul>
+				{% for product in category.product_set.all %}
+					<li>
+						<a href="{% url 'products:product-detail' product.pk %}">{{ product.title }}</a>
+					</li>
+				{% endfor %}
+			</ul>
+		</li>
+	{% endfor %}
+</ul>

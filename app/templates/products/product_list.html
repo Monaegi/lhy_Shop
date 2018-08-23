@@ -1,7 +1,76 @@
 {% extends 'products/base.html' %}
+{% load static %}
 
 {% block product-content %}
 <div>
-
+	{% for product in products %}
+	<div class="row mb-3">
+		<div class="col">
+			<div class="card">
+				<div class="card-body pd-0">
+					<div class="product-info pd-0">
+						<img src="{% static 'theme/img/components/img04.jpg' %}" alt="" class="card-img-body-left">
+						<div class="body-right">
+							<div class="card-title">{{ product.title }}</div>
+							<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aperiam doloribus eius eligendi est facere laborum quaerat rem saepe voluptatibus!</p>
+						</div>
+					</div>
+					<table class="table text-center mb-0">
+						<thead class="thead-inverse">
+							<tr>
+								<th>사이즈</th>
+								<th>포장단위</th>
+								<th>단가</th>
+								<th>가격</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for option in product.option_set.all %}
+							<tr>
+								<td>{{ option.title }}</td>
+								<td>800</td>
+								<td>3</td>
+								<td>2,400원</td>
+							</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	{% endfor %}
+{#		<div class="col">#}
+{#			<div class="product-card mb-30">#}
+{#				<div class="product-card-thumb">#}
+{#					<span class="product-badge text-danger">Sale</span>#}
+{#					<a href="#" class="product-card-link"></a>#}
+{#					<img src="{% static 'theme/img/shop/th01.jpg' %}" alt="">#}
+{#					<div class="product-card-buttons">#}
+{#						<button#}
+{#							class="btn btn-white btn-sm btn-wishlist"#}
+{#							data-toggle="tooltip"><i class="material-icons favorite_border"></i></button>#}
+{#						<button#}
+{#							class="btn btn-primary btn-sm"#}
+{#							data-toast#}
+{#							data-toast-type="success"#}
+{#							data-toast-position="topRight"#}
+{#							data-toast-icon="material-icons check"#}
+{#							data-toast-title="Product"#}
+{#							data-toast-message="successfully added to cart!">Add to Cart</button>#}
+{#					</div>#}
+{#				</div>#}
+{#				<div>#}
+{#					<div class="product-card-details">#}
+{#						<h3 class="product-card-title">#}
+{#							<a href="#">Storage Box</a>#}
+{#						</h3>#}
+{#						<h4 class="product-card-price">#}
+{#							<del>$49.00</del>$38.00#}
+{#						</h4>#}
+{#					</div>#}
+{#				</div>#}
+{#			</div>#}
+{#		</div>#}
 </div>
 {% endblock %}

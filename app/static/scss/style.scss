@@ -41,3 +41,31 @@ header.top-nav {
         }
     }
 }
+
+// Card
+.card > .card-body.pd-0 {
+    padding: 0;
+}
+.card > .card-body > .product-info {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: -1px;
+
+    &.pd-0 {
+        padding: 0;
+    }
+
+    > .card-img-body-left {
+        height: 150px;
+    }
+    > .body-right {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 1.25rem;
+    }
+}
+// Table
+.table-sm {
+  font-size: 0.8rem;
+}

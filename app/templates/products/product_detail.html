@@ -1,0 +1,42 @@
+{% extends 'products/base.html' %}
+{% load static %}
+
+{% block product-content %}
+<div>
+	<div class="row mb-3">
+		<div class="col">
+			<div class="card">
+				<div class="card-body pd-0">
+					<div class="product-info pd-0">
+						<img src="{% static 'theme/img/components/img04.jpg' %}" alt="" class="card-img-body-left">
+						<div class="body-right">
+							<div class="card-title">{{ product.title }}</div>
+							<p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus aperiam doloribus eius eligendi est facere laborum quaerat rem saepe voluptatibus!</p>
+						</div>
+					</div>
+					<table class="table table-sm text-center mb-0">
+						<thead class="thead-inverse">
+							<tr>
+								<th>사이즈</th>
+								<th>포장단위</th>
+								<th>단가</th>
+								<th>가격</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for option in product.option_set.all %}
+							<tr>
+								<td>{{ option.title }}</td>
+								<td>800</td>
+								<td>3</td>
+								<td>2,400원</td>
+							</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}

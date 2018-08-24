@@ -8,6 +8,7 @@ django = "*"
 pillow = "*"
 django-json-secrets = "*"
 django-sass-processor = "*"
+djangorestframework = "*"
 
 [dev-packages]
 awsebcli = "*"

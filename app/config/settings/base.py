@@ -14,6 +14,8 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 CONFIGS_DIR = os.path.join(ROOT_DIR, '.configs')
 SECRETS_DIR = os.path.join(ROOT_DIR, '.secrets')
 
+import_secrets()
+
 # Static
 MEDIA_ROOT = os.path.join(ROOT_DIR, '.media')
 STATIC_ROOT = os.path.join(ROOT_DIR, '.static')
@@ -37,7 +39,13 @@ AUTHENTICATION_BACKENDS = [
     'members.backends.SettingsBackend',
 ]
 
-import_secrets()
+# DRF
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+    )
+}
 
 INSTALLED_APPS = [
     'members',
@@ -51,6 +59,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'rest_framework',
     'sass_processor',
 ]
 

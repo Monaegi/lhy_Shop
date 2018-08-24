@@ -42,6 +42,19 @@ header.top-nav {
     }
 }
 
+// Table
+.table-bordered-inner {
+  tr {
+    th, td {
+      border-right: 1px solid #dee2e6;
+
+      &:last-child {
+        border-right: none;
+      }
+    }
+  }
+}
+
 // Card
 .card > .card-body.pd-0 {
     padding: 0;

@@ -108,7 +108,7 @@ class ProductOptionPrice(models.Model):
         related_name='price_set',
         on_delete=models.CASCADE,
     )
-    price = models.PositiveSmallIntegerField('가격', default=0)
+    price = models.DecimalField('가격', max_digits=12, decimal_places=1, default=0)
     start_at = models.DateTimeField('적용일시', auto_now_add=True)
 
     class Meta:

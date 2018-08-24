@@ -4,7 +4,7 @@ from ..models import ProductOption
 
 class ProductOptionForm(forms.ModelForm):
     unit = forms.IntegerField(label='단위수량')
-    price = forms.IntegerField(label='가격')
+    price = forms.DecimalField(label='가격')
 
     class Meta:
         model = ProductOption

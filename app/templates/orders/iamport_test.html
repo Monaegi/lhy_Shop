@@ -1,0 +1,37 @@
+{% extends 'orders/base.html' %}
+{% load static %}
+
+{% block script %}
+{{ block.super }}
+<script type="text/javascript">
+function testPay() {
+    IMP.request_pay({
+		    pg: 'inicis',
+		    pay_method: 'card',
+		    merchant_uid: 'merchant_' + new Date().getTime(),
+		    name: '주문명:결제테스트',
+		    amount: 500,
+		    buyer_email: 'dev@lhy.kr',
+		    buyer_name: '이한영',
+		    buyer_tel: '010-4432-1234',
+		    buyer_addr: '서울특별시 강남구 학동로',
+		    buyer_postcode: '123-456',
+		    m_redirect_url: 'http://localhost:8000/orders/payments/complete/'
+    }, function(response) {
+        if (response.success) {
+            console.log('Success');
+            console.log(response);
+        } else {
+            console.log('Failure');
+            console.log(response);
+        }
+    });
+}
+</script>
+{% endblock %}
+
+{% block order-content %}
+<div>
+	<button class="btn-primary btn-block" onclick="testPay()">Test pay!</button>
+</div>
+{% endblock %}

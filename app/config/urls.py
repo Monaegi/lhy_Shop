@@ -19,14 +19,19 @@ from django.urls import path, re_path, include
 
 from . import views
 
+urlpatterns_apis = [
+    path('orders/', include('orders.urls.apis')),
+]
 urlpatterns = [
     path('admin/', admin.site.urls),
 
     path('', views.IndexView.as_view(), name='index'),
     path('', include('products.urls')),
+    path('api/', include(urlpatterns_apis)),
+    path('orders/', include('orders.urls')),
 ]
+
 if settings.DEBUG:
     import debug_toolbar
-    urlpatterns = [
-        re_path(r'^__debug/', include(debug_toolbar.urls)),
-    ] + urlpatterns
+
+    urlpatterns += [re_path(r'^__debug/', include(debug_toolbar.urls))]

@@ -68,6 +68,10 @@ class ProductOption(models.Model):
     def price(self, value):
         self.price_set.create(price=value)
 
+    @property
+    def price_per_unit(self):
+        return self.price * self.unit
+
 
 class ProductOptionUnit(models.Model):
     product_option = models.ForeignKey(

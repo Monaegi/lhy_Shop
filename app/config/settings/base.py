@@ -47,8 +47,12 @@ REST_FRAMEWORK = {
     )
 }
 
+# Cart
+CART_SESSION_ID = 'cart'
+
 INSTALLED_APPS = [
     'members',
+    'orders',
     'products',
     'utils',
 
@@ -91,6 +95,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'products.context_processors.category',
+                'orders.context_processors.cart',
             ],
         },
     },

@@ -9,6 +9,10 @@ pillow = "*"
 django-json-secrets = "*"
 django-sass-processor = "*"
 djangorestframework = "*"
+pytest-django = "*"
+model-mommy = "*"
+pytest-cov = "*"
+iamport-rest-client = "*"
 
 [dev-packages]
 awsebcli = "*"

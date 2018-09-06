@@ -57,11 +57,7 @@ class Cart:
 
     @property
     def items(self):
-        data = [CartItem(pk, item['quantity']) for pk, item in self.cart.items()]
-        # data = (CartItem(pk, item['quantity']) for pk, item in self.cart.items())
-        # print(data)
-        # print(type(data))
-        return data
+        return [CartItem(pk, item['quantity']) for pk, item in self.cart.items()]
 
     def __iter__(self):
         for item in self.items:

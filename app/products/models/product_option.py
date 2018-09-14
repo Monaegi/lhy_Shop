@@ -4,8 +4,10 @@ from .product import Product
 
 
 class ProductOptionManager(models.Manager):
-    def create(self, unit, price, **kwargs):
-        return super().create(unit, price, **kwargs)
+    def create(self, **kwargs):
+        if not ('unit' in kwargs and 'price' in kwargs):
+            raise ValueError('"unit" and "price" keyword arguments required')
+        return super().create(**kwargs)
 
 
 class ProductOption(models.Model):
@@ -34,29 +36,48 @@ class ProductOption(models.Model):
             option=self.title,
         )
 
-    def save(self, unit=None, price=None, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
+        """
+        unit과 price값이 self.model(**kwargs)와 같은 방식으로 주어졌을 때,
+        save()에서 해당 값들을 사용할 수 있도록 인스턴스에 저장해놓음
+        :param args:
+        :param kwargs:
+        """
+        self._unit = kwargs.pop('unit', None)
+        self._price = kwargs.pop('price', None)
+        super().__init__(*args, **kwargs)
+
+    def save(self, *args, **kwargs):
+        """
+        save()에 직접 'unit', 'price'를 전달받거나
+        ProductOption(unit=..., price=...)형태로 받은 경우 모두 처리
+        :param args:
+        :param kwargs:
+        :return:
+        """
+        unit = kwargs.get('unit', self._unit)
+        price = kwargs.get('price', self._price)
         if self.pk:
             super().save(*args, **kwargs)
-            if unit and unit != self.unit:
-                self.unit_set.create(unit=unit)
-            if price and price != self.price:
-                self.price_set.create(price=price)
         else:
             if not (unit and price):
                 raise ValueError('Argument "unit" and "price" are required to create ProductOption')
             super().save(*args, **kwargs)
-            self.unit_set.create(unit=unit)
-            self.price_set.create(price=price)
+        # 모델 변경사항 저장 후 unit, price관련 값 설정
+        instance = self.__class__.objects.get(pk=self.pk)
+        instance.unit = unit
+        instance.price = price
 
     @property
     def unit(self):
-        if not self.unit_set.exists():
+        if self.pk and not self.unit_set.exists():
             self.unit_set.create(unit=1)
         return self.unit_set.first().unit
 
     @unit.setter
     def unit(self, value):
-        self.unit_set.create(unit=value)
+        if self.unit != value:
+            self.unit_set.create(unit=value)
 
     @property
     def price(self):
@@ -66,7 +87,8 @@ class ProductOption(models.Model):
 
     @price.setter
     def price(self, value):
-        self.price_set.create(price=value)
+        if self.price != value:
+            self.price_set.create(price=value)
 
     @property
     def price_per_unit(self):

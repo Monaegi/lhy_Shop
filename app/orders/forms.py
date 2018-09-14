@@ -15,7 +15,6 @@ class CartItemFormMixin(forms.Form):
     def clean_product_option(self):
         data = self.cleaned_data['product_option']
         if not ProductOption.objects.filter(pk=data).exists():
-            # raise forms.ValidationError(f'ProductOption(PK:{data}) not exist')
             raise forms.ValidationError(f'ProductOption(PK:{data}) not exist')
         return ProductOption.objects.get(pk=data)
 

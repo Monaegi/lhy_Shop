@@ -1,4 +1,5 @@
-from rest_framework.exceptions import APIException, ValidationError
+from rest_framework import status
+from rest_framework.exceptions import ValidationError
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
@@ -20,7 +21,7 @@ class CartAPIView(APIView):
         form = CartItemAddForm(request.data)
         if form.is_valid():
             cart = form.save(request)
-            return Response(CartSerializer(cart).data)
+            return Response(CartSerializer(cart).data, status=status.HTTP_201_CREATED)
         raise ValidationError(form.errors)
 
     def delete(self, request):
@@ -28,3 +29,4 @@ class CartAPIView(APIView):
         if form.is_valid():
             cart = form.save(request)
             return Response(CartSerializer(cart).data)
+        raise ValidationError(form.errors)

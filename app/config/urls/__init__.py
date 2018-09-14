@@ -17,17 +17,15 @@ from django.conf import settings
 from django.contrib import admin
 from django.urls import path, re_path, include
 
-from . import views
+from . import apis as urlpatterns_apis
+from .. import views
 
-urlpatterns_apis = [
-    path('orders/', include('orders.urls.apis')),
-]
 urlpatterns = [
     path('admin/', admin.site.urls),
 
     path('', views.IndexView.as_view(), name='index'),
     path('', include('products.urls')),
-    path('api/', include(urlpatterns_apis)),
+    path('api/', include(urlpatterns_apis, namespace='api')),
     path('orders/', include('orders.urls')),
 ]
 

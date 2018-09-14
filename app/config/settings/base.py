@@ -14,6 +14,7 @@ TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
 CONFIGS_DIR = os.path.join(ROOT_DIR, '.configs')
 SECRETS_DIR = os.path.join(ROOT_DIR, '.secrets')
 
+PRINT_JSON_SETTINGS = False
 import_secrets()
 
 # Static

@@ -32,7 +32,6 @@ class Command(BaseCommand):
                             middle_category=middle_category,
                             _title=data_small_category['title'],
                         )
-                        print(small_category)
                         for data_product in data_small_category.get('products', []):
                             product, __ = Product.objects.get_or_create(
                                 category=small_category,

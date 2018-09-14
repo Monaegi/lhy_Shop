@@ -10,7 +10,6 @@ __all__ = (
 
 class IamportCompleteView(View):
     def get(self, request):
-        print(request.GET)
         return HttpResponse(str(request.GET))
 
 

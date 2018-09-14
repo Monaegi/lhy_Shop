@@ -7,6 +7,5 @@ class ProductOptionAdmin(admin.ModelAdmin):
 
     def get_changeform_initial_data(self, request):
         data = super().get_changeform_initial_data(request)
-        print(data)
         return data
 

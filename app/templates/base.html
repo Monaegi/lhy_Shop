@@ -14,6 +14,7 @@
 	<link rel="stylesheet" href="{% sass_src 'scss/style.scss' %}">
 	<script src="{% static 'theme/js/modernizr.min.js' %}"></script>
 	<script src="{% static 'js/vue.js' %}"></script>
+	<script src="{% static 'js/axios.js' %}"></script>
 	{% block head %}
 	{% endblock %}
 </head>
@@ -31,6 +32,9 @@
 		</header>
 
 		<div id="content">
+			<div class="test">
+				${cart}
+			</div>
 			{% block content %}
 			{% endblock %}
 		</div>
@@ -38,6 +42,26 @@
     <script src="{% static 'theme/js/scripts.min.js' %}"></script>
 		{% block script %}
 		{% endblock %}
+		<script>
+			var baseURL = '/api';
+			var vm = new Vue({
+				el: '#content',
+				delimiters: ['${', '}'],
+				data: {
+				  cart: {}
+				},
+				created: function () {
+				  axios({
+					  method: 'get',
+					  url: baseURL + '/orders/cart/'
+				  }).then(function (response) {
+						vm.cart = response.data;
+				  }).catch(function (response) {
+				    
+				  });
+				}
+			});
+		</script>
 	</div>
 </body>
 </html>

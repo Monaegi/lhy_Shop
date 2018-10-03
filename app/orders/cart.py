@@ -30,7 +30,7 @@ class Cart:
         not_exist_pk_list = []
         for key in self.cart:
             if not ProductOption.objects.values('pk').filter(pk=key).exists():
-                not_exist_pk_list.append(key)
+                 not_exist_pk_list.append(key)
         for not_exist_pk in not_exist_pk_list:
             del self.cart[not_exist_pk]
 

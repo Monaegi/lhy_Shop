@@ -92,7 +92,7 @@ class ProductOption(models.Model):
 
     @property
     def price_per_unit(self):
-        return self.price * self.unit
+        return int(self.price * self.unit)
 
 
 class ProductOptionUnit(models.Model):

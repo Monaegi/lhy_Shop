@@ -21,3 +21,7 @@ class ProductDetailView(DetailView):
     model = Product
     context_object_name = 'product'
     template_name = 'products/product_detail.html'
+    queryset = Product.objects.prefetch_related(
+        'option_set__unit_set',
+        'option_set__price_set',
+    )

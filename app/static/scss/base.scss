@@ -12,3 +12,13 @@ html, body {
     font-size: 30px;
   }
 }
+.table th, .table td {
+  vertical-align: middle;
+
+  .btn-sm {
+    margin-top: 0;
+    margin-bottom: 0;
+    height: 24px;
+    line-height: 16px;
+  }
+}

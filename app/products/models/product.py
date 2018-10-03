@@ -1,5 +1,6 @@
 from django.db import models
 
+from utils.helpers import RandomFileName
 from .product_category import (
     ProductCategory,
 )
@@ -17,6 +18,7 @@ class Product(models.Model):
         on_delete=models.CASCADE,
     )
     title = models.CharField('상품명', max_length=100)
+    img_cover = models.ImageField('커버 이미지', upload_to=RandomFileName('product'), blank=True)
 
     class Meta:
         verbose_name = '상품'
@@ -28,3 +30,18 @@ class Product(models.Model):
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
+
+
+class ProductImage(models.Model):
+    product = models.ForeignKey(
+        Product,
+        verbose_name='상품',
+        related_name='image_set',
+        on_delete=models.CASCADE,
+    )
+    img = models.ImageField('상품 이미지', upload_to=RandomFileName('product'))
+
+    class Meta:
+        verbose_name = '상품 이미지'
+        verbose_name_plural = f'{verbose_name} 목록'
+        order_with_respect_to = 'product'

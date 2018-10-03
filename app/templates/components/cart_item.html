@@ -1,0 +1,18 @@
+{% load static %}
+<tr>
+	<td>
+		<div class="product-item">
+			<a href="#" class="product-thumb"><img src="{% static 'theme/img/shop/cart/01.jpg' %}" alt=""></a>
+			<div class="product-info">
+				<h4 class="product-title">
+					<a href="#">${item.product.title}</a>
+				</h4>
+				<span><em>옵션:</em> ${item.option.title}</span>
+				<span><em>수량:</em> ${item.quantity}</span>
+			</div>
+		</div>
+	</td>
+	<td class="text-center">
+		<a href="#" class="remove-from-cart"><i class="material-icons icon_close"></i></a>
+	</td>
+</tr>

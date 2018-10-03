@@ -20,23 +20,22 @@
 </head>
 <body>
 	<div id="wrap">
-		<header class="top-nav navbar navbar-sticky">
-			<!-- Site Branding -->
-			{% include 'include/header/site-branding.html' %}
+		<div id="app">
+			<header class="top-nav navbar navbar-sticky">
+				<!-- Site Branding -->
+				{% include 'include/header/site-branding.html' %}
 
-			<!-- Main Navigation -->
-			{% include 'include/header/main-navigation.html' %}
+				<!-- Main Navigation -->
+				{% include 'include/header/main-navigation.html' %}
 
-			<!-- Toolbar -->
-			{% include 'include/header/toolbar.html' %}
-		</header>
+				<!-- Toolbar -->
+				{% include 'include/header/toolbar.html' %}
+			</header>
 
-		<div id="content">
-			<div class="test">
-				${cart}
+			<div id="content">
+				{% block content %}
+				{% endblock %}
 			</div>
-			{% block content %}
-			{% endblock %}
 		</div>
 		<script src="{% static 'theme/js/vendor.min.js' %}"></script>
     <script src="{% static 'theme/js/scripts.min.js' %}"></script>
@@ -44,21 +43,83 @@
 		{% endblock %}
 		<script>
 			var baseURL = '/api';
+			var urlCart = baseURL + '/orders/cart/';
+			Vue.component('cartProduct', {
+			  delimiters: ['${', '}'],
+			  props: ['cartItem'],
+				template: '{% spaceless %}{% include 'components/cart_item.html' %}{% endspaceless %}',
+				computed: {
+				  item: function () {
+				    return this.cartItem
+          }
+        }
+			});
+
 			var vm = new Vue({
-				el: '#content',
+				el: '#app',
 				delimiters: ['${', '}'],
 				data: {
 				  cart: {}
 				},
 				created: function () {
-				  axios({
-					  method: 'get',
-					  url: baseURL + '/orders/cart/'
-				  }).then(function (response) {
-						vm.cart = response.data;
-				  }).catch(function (response) {
-				    
-				  });
+				  this.getCart();
+				},
+				methods: {
+				  getCart: function () {
+				    const vm = this;
+					  axios({
+						  method: 'get',
+						  url: urlCart
+					  }).then(function (response) {
+							vm.cart = response.data;
+					  }).catch(function (response) {
+							console.log(response);
+					  });
+				  },
+					addCartItem: function (productOptionID, quantity) {
+						const vm = this;
+						axios({
+							method: 'post',
+							url: urlCart,
+							data: {
+							  product_option: productOptionID,
+								quantity: quantity
+							}
+						}).then(function (response) {
+						  iziToast.success({
+							  title: '상품이 장바구니에 담겼습니다',
+							  position: 'topRight',
+							  timeout: 100000,
+							  class: 'iziToast-success'
+						  });
+						  vm.getCart();
+						}).catch(function (response) {
+						  console.log(response);
+						})
+					}
+				},
+				computed: {
+				  cartItems: function () {
+				    // Cart의 2차원구조를 1차원으로 변경
+				    console.log(this.cart.amount);
+				    if (!this.cart.items) {
+				      return [];
+				    }
+				    var items = [];
+				    for (var i = 0; i < this.cart.items.length; i++) {
+				      var curItem = this.cart.items[i]
+					    for (var j = 0; j < curItem.options.length; j++) {
+				        var curOption = curItem.options[j];
+					      var newItem = {
+					        product: curItem.product,
+						      option: curOption.option,
+						      quantity: curOption.quantity
+					      };
+					      items.push(newItem);
+					    }
+				    }
+				    return items;
+				  }
 				}
 			});
 		</script>

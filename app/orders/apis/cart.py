@@ -9,6 +9,7 @@ from ..serializers import CartSerializer
 
 __all__ = (
     'CartAPIView',
+    'CartClearAPIView',
 )
 
 
@@ -20,8 +21,8 @@ class CartAPIView(APIView):
     def post(self, request):
         form = CartItemAddForm(request.data)
         if form.is_valid():
-            cart = form.save(request)
-            return Response(CartSerializer(cart).data, status=status.HTTP_201_CREATED)
+            form.save(request)
+            return Response(status=status.HTTP_201_CREATED)
         raise ValidationError(form.errors)
 
     def delete(self, request):
@@ -30,3 +31,10 @@ class CartAPIView(APIView):
             cart = form.save(request)
             return Response(CartSerializer(cart).data)
         raise ValidationError(form.errors)
+
+
+class CartClearAPIView(APIView):
+    def delete(self, request):
+        cart = Cart(request)
+        cart.clear()
+        return Response(CartSerializer(cart).data)

@@ -9,6 +9,9 @@ class ProductOptionManager(models.Manager):
             raise ValueError('"unit" and "price" keyword arguments required')
         return super().create(**kwargs)
 
+    def prefetch(self):
+        return self.get_queryset().prefetch_related('unit_set', 'price_set')
+
 
 class ProductOption(models.Model):
     """

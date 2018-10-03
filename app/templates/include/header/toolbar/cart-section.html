@@ -16,41 +16,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr>
-				<td>
-					<div class="product-item">
-						<a href="#" class="product-thumb"><img src="{% static 'theme/img/shop/cart/01.jpg' %}" alt=""></a>
-						<div class="product-info">
-							<h4 class="product-title">
-								<a href="#">3-Drawer File Cabinet</a>
-							</h4>
-							<span><em>Price:</em> $257.00</span>
-							<span><em>Quantity:</em> 1</span>
-						</div>
-					</div>
-				</td>
-				<td class="text-center">
-					<a href="#" class="remove-from-cart"><i class="material-icons icon_close"></i></a>
-				</td>
-			</tr>
-
-			<tr>
-				<td>
-					<div class="product-item">
-						<a href="#" class="product-thumb"><img src="{% static 'theme/img/shop/cart/02.jpg' %}" alt=""></a>
-						<div class="product-info">
-							<h4 class="product-title">
-								<a href="#">Plastic Tissue Holder</a>
-							</h4>
-							<span><em>Price:</em> $76.40</span>
-							<span><em>Quantity:</em> 1</span>
-						</div>
-					</div>
-				</td>
-				<td class="text-center">
-					<a href="#" class="remove-from-cart"><i class="material-icons icon_close"></i></a>
-				</td>
-			</tr>
+			<tr is="cart-product" :cart-item.sync="item" v-for="(item, index) in cartItems" :key="index"></tr>
 		</tbody>
 	</table>
 </div>

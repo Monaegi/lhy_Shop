@@ -54,6 +54,9 @@
           }
         }
 			});
+			Vue.filter('currency', function (value) {
+		    return new Intl.NumberFormat('ko-KR', { style: 'currency', currency: 'KRW' }).format(value);
+		  });
 
 			var vm = new Vue({
 				el: '#app',
@@ -89,7 +92,7 @@
 						  iziToast.success({
 							  title: '상품이 장바구니에 담겼습니다',
 							  position: 'topRight',
-							  timeout: 100000,
+							  timeout: 1000,
 							  class: 'iziToast-success'
 						  });
 						  vm.getCart();

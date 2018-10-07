@@ -16,7 +16,7 @@
 			</tr>
 		</thead>
 		<tbody>
-			<tr is="cart-product" :cart-item.sync="item" v-for="(item, index) in cartItems" :key="index"></tr>
+			<tr is="cart-product" :cart-item.sync="item" :remove="removeCartItem" v-for="(item, index) in cartItems" :key="index"></tr>
 		</tbody>
 	</table>
 </div>

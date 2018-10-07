@@ -46,7 +46,7 @@
 			var urlCart = baseURL + '/orders/cart/';
 			Vue.component('cartProduct', {
 			  delimiters: ['${', '}'],
-			  props: ['cartItem'],
+			  props: ['cartItem', 'remove'],
 				template: '{% spaceless %}{% include 'components/cart_item.html' %}{% endspaceless %}',
 				computed: {
 				  item: function () {
@@ -62,7 +62,9 @@
 				el: '#app',
 				delimiters: ['${', '}'],
 				data: {
-				  cart: {}
+				  cart: {
+				    items: []
+				  }
 				},
 				created: function () {
 				  this.getCart();
@@ -91,7 +93,7 @@
 						}).then(function (response) {
 						  iziToast.success({
 							  title: '상품이 장바구니에 담겼습니다',
-							  position: 'topRight',
+							  position: 'topLeft',
 							  timeout: 1000,
 							  class: 'iziToast-success'
 						  });
@@ -99,6 +101,26 @@
 						}).catch(function (response) {
 						  console.log(response);
 						})
+					},
+					removeCartItem: function (productOptionID) {
+				    const vm = this;
+				    axios({
+					    method: 'delete',
+					    url: urlCart,
+					    data: {
+					      product_option: productOptionID
+					    }
+				    }).then(function (response) {
+				      iziToast.success({
+					      title: '상품이 장바구니에서 삭제되었습니다',
+					      position: 'topLeft',
+					      timeout: 1000,
+					      class: 'iziToast-success'
+				      });
+				      vm.getCart();
+				    }).catch(function (response) {
+				      console.log(response);
+				    })
 					}
 				},
 				computed: {

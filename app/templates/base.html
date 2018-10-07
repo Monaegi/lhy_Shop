@@ -104,7 +104,6 @@
 				computed: {
 				  cartItems: function () {
 				    // Cart의 2차원구조를 1차원으로 변경
-				    console.log(this.cart.amount);
 				    if (!this.cart.items) {
 				      return [];
 				    }
@@ -122,7 +121,15 @@
 					    }
 				    }
 				    return items;
-				  }
+				  },
+					cartTotalAmount: function () {
+				    var total = 0;
+				    for (var i = 0; i < this.cartItems.length; i++) {
+				      var curItem = this.cartItems[i];
+				      total += curItem.option.price * curItem.option.unit * curItem.quantity;
+				    }
+				    return total;
+					}
 				}
 			});
 		</script>

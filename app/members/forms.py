@@ -1,10 +1,26 @@
 from django import forms
+from django.contrib.auth import login, authenticate
 
 from .models import User
 
 __all__ = (
+    'LoginForm',
     'SignupForm',
 )
+
+
+class LoginForm(forms.Form):
+    username = forms.CharField()
+    password = forms.CharField(widget=forms.PasswordInput())
+
+    def login(self, request):
+        username = self.cleaned_data['username']
+        password = self.cleaned_data['password']
+        user = authenticate(username=username, password=password)
+        if user:
+            login(request, user, backend='django.contrib.auth.backends.ModelBackend')
+            return user
+        raise forms.ValidationError('아이디 또는 비밀번호가 잘못되었습니다')
 
 
 def make_options(**kwargs):

@@ -8,8 +8,12 @@
 		<a href="#search" class="toolbar-toggle search-toggle">
 			<i class="material-icons search"></i>
 		</a>
-		<a href="#account" class="toolbar-toggle">
-			<i class="material-icons person"></i>
+		<a href="#account" class="toolbar-toggle account-toggle">
+			<i class="material-icons person">
+				{% if user.is_authenticated %}
+					<div class="icon-desc">{{ user.name }}</div>
+				{% endif %}
+			</i>
 		</a>
 		<a href="#cart" class="toolbar-toggle">
 			<i>

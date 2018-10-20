@@ -26,6 +26,7 @@ urlpatterns = [
     path('', views.IndexView.as_view(), name='index'),
     path('', include('products.urls')),
     path('api/', include(urlpatterns_apis, namespace='api')),
+    path('members/', include('members.urls')),
     path('orders/', include('orders.urls')),
 ]
 
